@@ -1,0 +1,108 @@
+html,
+body {
+  font-family: @baseFont;
+  font-weight: @fontWeightRegular;
+  //this helps the antialising of fonts for css3 browsers
+  .font-smoothing(antialiased);
+  //improves the handling of kerning pairs and ligatures
+  text-rendering: optimizeLegibility;
+  //helps correct an annoyance in iOS when you switch from portrait to landscape mode (iOS bumps up the size)
+  -webkit-text-size-adjust: 100%;
+  color: @baseFontColor;
+
+  // TODO: Followup with Brian on why I needed to add this in order for the
+  // particle background to work. This is not set in the LESS used in our
+  // static designs.
+  position: static;
+}
+
+.page-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  display: table;
+  width: 100%;
+
+  .box-sizing(border-box);
+
+
+  body.nav & {
+    padding-top: 51px;
+    padding-bottom: 51px;
+  }
+
+  body.sub-nav & {
+    padding-top:101px;
+    padding-bottom: 101px;
+  }
+
+  .page-content {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 50px 0;
+    text-align: left;
+
+    .loading-msg {
+      text-align: center;
+    }
+  }
+
+  .page-content-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0px 30px;
+
+    header {
+      h1 {
+        font-size: 28px;
+        margin-top: 0px
+      }
+      span.message {
+        font-size: 14px;
+      }
+    }
+
+    .activation-page {
+      a {
+        &:hover,
+        &:focus {
+          color: @blue_1;
+          cursor: pointer;
+          text-decoration: underline;
+          .transition(color 200ms ease);
+        }
+
+        &.page-link {
+          color: @blue_1;
+        }
+      }
+    }
+
+    nav {
+      .nav-item {
+        display: inline-block;
+        font-size: 12px;
+        color: @dark_text_1;
+        &.active {
+          color: @dark_text_2;
+
+          >:after {
+            content: '';
+            display: block;
+            margin-top: 1px;
+            width: 96px;
+            height: 1px;
+            background-color: @dark_text_2;
+          }
+
+        }
+        &:first-child {
+          padding-right: 41px;
+        }
+      }
+    }
+  }
+}

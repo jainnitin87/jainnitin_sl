@@ -1,0 +1,71 @@
+.alert {
+  border: 1px solid transparent;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: @fontWeightMedium;
+  padding: 12px;
+  line-height: 18px;
+  margin-bottom: 9px;
+
+  a {
+    &,
+    &:visited,
+    &:hover,
+    &:focus {
+      color: @blue_1;
+      cursor: pointer;
+      text-decoration: none;
+      .transition(color 200ms ease);
+    }
+
+    &.alert-link {
+      text-decoration: underline;
+    }
+  }
+
+  // TODO: These color codes should be rationalized within variables.less
+  &.info,
+  &.alert-info {
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+    color: #31708f;
+
+    .alert-link {
+      color: #245269;
+    }
+  }
+  &.warning,
+  &.alert-warning {
+    background-color: #ffe49c;
+    border-color: #ffc883;
+    color: #d9a92b;
+
+    .alert-link {
+      color: #b18920;
+    }
+  }
+  &.error,
+  &.alert-error {
+    background-color: #f1d3d4;
+    border-color: #ebc0c8;
+    color: #a9484b;
+
+    .alert-link {
+      color: #85393b;
+    }
+  }
+  &.success,
+  &.alert-success {
+    background-color: #d5e3bf;
+    border-color: #d2dbad;
+    color: #6eb17b;
+
+    .alert-link {
+      color: #539960;
+    }
+    .alert-note {
+      color: @orange_text_1;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+/*
+ * Copyright (c) 2013 Nutanix Inc. All rights reserved.
+ *
+ * Top level less file that is used as a wrapper for generating all of the
+ * other less files.
+ *
+ * The LESS files imported below are compiled and included in the order
+ * they are listed.  Mixins, variables, etc. should be imported first
+ * so that they can be accessed by subsequent LESS stylesheets.
+ *
+ */
+
+
+// Import vendor styles
+@import 'lesshat/build/lesshat.less';
+@import 'normalize-less/normalize.less';
+@import 'Less-Boilerplate/boilerplate.less';
+
+// Import app styles
+@import 'overrides/less-boilerplate-overrides.less';
+@import 'includes/variables.less';
+@import 'includes/utility-classes.less';
+@import 'includes/mixins.less';
+@import 'includes/fancyselect.less';
+@import 'includes/fancyselect-override.less';
+@import 'includes/typography.less';
+@import 'includes/input.less';
+@import 'includes/buttons.less';
+@import 'includes/tooltip.less';
+@import 'includes/alert.less';
+@import 'includes/form.less';
+@import 'includes/select-block.less';
+@import 'includes/icons.less';
+@import 'includes/layout.less';
+@import 'includes/header.less';
+@import 'includes/footer.less';
+@import 'includes/login.less';
+@import 'includes/register.less';
+@import 'includes/reset-password.less';
+@import 'includes/email-verify.less';
+@import 'includes/app-header.less';
+@import 'includes/common.less';
+@import 'includes/form-block.less';
+@import 'includes/settings.less';

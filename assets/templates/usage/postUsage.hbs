@@ -1,0 +1,79 @@
+<style type="text/css">
+
+.xi_logo{
+    padding-top:20px
+  }
+
+	h2 {
+  	 color:#3f4142;
+    font-size: -webkit-xxx-large;
+   }
+
+	.usageContainer{
+		text-align: center;
+
+	}
+
+
+	.usageTable{
+		text-align: left;
+	width:50%;
+    height:100%;
+    margin: 2% auto;
+	}
+
+	.postUsageButton{
+		margin : 30px;
+		background-color: #d4f1fc;
+	}
+
+	#postStatus{
+		color: blue;
+	}
+
+</style>
+
+<div class="usageContainer">
+<img class="xi_logo" src="images/icons/Xi_logo.png">
+
+<h2>Xi Post usage</h2>
+
+<table class="usageTable">
+	<tr>
+		<td>AccountId</td>
+		<td><input id="accountId" type="text" value="{{accountInfo.accountId}}"></td>
+	</tr>
+	<tr>
+		<td>SubscriptionId</td>
+		<td><input id="SubscriptionId" type="text" value="{{accountInfo.subId}}"></td>
+	</tr>
+	<tr>
+		<td>Usage: CPU (Per GHz)</td>
+		<td><input id="cpuUsage" type="text" value="200"></td>
+	</tr>
+	<tr>
+		<td>Usage: Data transfer Out - Region 1 (GB)</td>
+		<td><input id="gbTransferred" type="text" value="20000"></td>
+	</tr>
+	<tr>
+		<td>Usage: VM Disk Size (GB)</td>
+		<td><input id="gbUsage" type="text" value="20000"></td>
+	</tr>
+	<tr>
+		<td>Usage: Number of replicated VMs (VMs per Month)</td>
+		<td><input id="vmUsage" type="text" value="4"></td>
+	</tr>
+	<tr>
+		<td>Usage Date</td>
+		<td><input id="usageDate" type="text" value="{{accountInfo.usageDate}}"></td>
+	</tr>
+
+	
+	<tr>
+		<td id="postStatus"></td>
+		<td><button class="postUsageButton">Post usage</button></td>
+	</tr>
+
+</table>
+
+</div>

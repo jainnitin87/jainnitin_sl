@@ -1,0 +1,33 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  font-family: @baseFont;
+  font-size: 16px;
+  font-weight: @fontWeightMedium;
+  outline: none;
+  border: 1px solid @border_dark;
+  // border: 1px solid #fff;
+  border-radius: 4px;
+  height: 42px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  color: @dark_1;
+  .box-sizing(border-box);
+  .placeholder(@placeholder_text);
+  .font-smoothing(antialiased);
+
+  &.half {
+    width: 48.25%;
+
+    &:first-child {
+      margin-right: 3.25%;
+    }
+  }
+
+  &.error {
+    color: @red_1;
+    border-color: @red_1;
+  }
+}

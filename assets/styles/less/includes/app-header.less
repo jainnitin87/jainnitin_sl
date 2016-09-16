@@ -1,0 +1,50 @@
+header.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  background-color: #fff;
+  z-index: 2;
+
+  a {
+    >i {
+      font-size: 10px;
+      &.left {
+        padding-right: 7px;
+      }
+      &.right {
+        padding-left: 7px;
+      }
+    }
+  }
+
+  .site-nav {
+    border-bottom: solid 1px #c6cccf;
+    padding: 0px 29px;
+
+    .logo {
+      float: left;
+      height: 12px;
+      width: 95px;
+      fill: @dark_text_1;
+      padding: 19px 29px 19px 0px;
+    }
+    .actions {
+      float: right;
+      line-height: 50px;
+      .action-item {
+        &:first-child {
+          padding-right: 35px;
+        }
+        display: inline-block;
+      }
+    }
+  }
+
+  .page-nav {
+    background: @dark_3;
+    padding: 0px 29px;
+    line-height: 50px;
+  }
+}

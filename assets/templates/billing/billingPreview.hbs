@@ -1,0 +1,112 @@
+<style>
+table.invoiceClass{
+      width: 100%;
+      border: 1px solid #c6cccf;
+    }
+}
+u,b{
+  padding:10px;
+}
+
+#totalAmount{
+  color: blue;
+    font-weight: 600;
+}
+</style>
+
+<header class="n-header" id="n-homepage-hero">
+  <div class="n-main-header" style="padding-top: 20px;">
+    
+    <div id="container">
+      <div class="billing-content">
+        <div class="plan line-bottom">
+          <div class="current-plan">Current Plan</div>
+          <div class="editplan"><a href="/#xi/plans?q=true" class="n-action-buttons n-button">Edit</a></div>
+        </div>
+        <div class="billpreview">
+          <div class="plan-name"><b><u>Pay as you go</b></u></div>
+          </br>
+          <div id="totalAmount" style="text-align: right;"></div>
+        </div>
+        <div id="chart" class ="line-bottom"></div>
+        <div class="usage">
+          <p>
+            <b>
+              <u>
+                Usage
+              </u>
+            </b>
+          </p>
+          <p>
+            <div>
+              <!-- START -->
+               <div class="tabs">
+                 <div class="tab">
+                     <input type="radio" id="tab-1" name="tab-group-1" checked>
+                     <label for="tab-1">Visual</label>
+                     <div class="content">
+                      <div id="usageData1">
+                        No usage yet!
+                      </div>
+                     </div>
+                 </div>
+
+                 <div class="tab">
+                     <input type="radio" id="tab-2" name="tab-group-1">
+                     <label for="tab-2">Usage Data</label>
+
+                     <div class="content">
+                      <div class="divTable" id = "usagedata">
+                        No usage yet!
+                      </div>
+                     </div>
+                 </div>
+              </div>
+              <!-- END -->
+            </div>
+          </p>
+        </div>
+      </div>
+              <div class="navbarBilling">
+                    <div class="invoices line-bottom">
+                        <div class="line-bottom padding-all-10px xi-blue-header">
+                          <b>Previous bills</b>
+                        </div>
+                        <div id="invoiceList">
+                            {{#if invoices}}
+                              <table class="invoiceClass">
+                                {{#each invoices}}
+                                  <tr>
+                                    <td>{{this.invoiceDate}}</td>
+                                    <td><a href='/api/v1/invoiceFile?url={{invoiceFiles.0.pdfFileUrl}}' target='_blank'>Download</a></td>
+                                  </tr>
+                                  {{/each}}
+                              </table>
+                              {{else}}
+                                <div class="padding-all-10px">
+                                  No previous bill found.
+                                </div>
+
+                              {{/if}}
+                        </div>
+
+                    </div>
+                    <div class="credits line-bottom">
+                      <div class="line-bottom padding-all-10px blue-header-no-redius">
+                        <b>Active credits</b>
+                        <div class="editplan margin-n2px"><a href="#" class="n-action-buttons n-button">Edit</a></div>
+                      </div>
+
+
+                    </div>
+                    <div class="payment line-bottom">
+                      <div class="line-bottom padding-all-10px blue-header-no-redius">
+                        <b>Payment details</b>
+                        <div class="editplan margin-n2px"><a href="#" class="n-action-buttons n-button">Edit</a></div>
+                      </div>
+                    </div>
+              </div>
+          </div>
+    </div>
+ </div>
+ </header>

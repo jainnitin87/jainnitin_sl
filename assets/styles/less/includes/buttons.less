@@ -1,0 +1,56 @@
+@btn_default: #9aa8b1;
+
+.btn {
+  font-family: @baseFont;
+  display: block;
+  background: none;
+  .appearance();
+  font-size: 16px;
+  font-weight: @fontWeightMedium;
+  outline: none;
+  border: 1px solid #fff;
+  .box-sizing(border-box);
+  border-radius: 4px;
+  height: 42px;
+  width: 100%;
+  padding: 0 15px;
+  line-height: 40px;
+  color: #fff;
+  .font-smoothing(antialiased);
+  text-align: center;
+
+  &:active {
+    box-shadow: inset 0 1px 3px -1px rgba(0, 0, 0, 0.18);
+  }
+
+  // TODO: Confirm the colors for the various gray button states.
+  &.btn-default {
+    .btn-mixin(@btn_default; #fff; @btn_default; @dark_2; @dark_2);
+  }
+
+  &.btn-blue {
+    .btn-mixin(@blue_1; #fff; @blue_1; #11a3d7; #0d8ebc);
+  }
+
+
+  &[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn-mixin(@background-color; @color; @border-color; @hover-bg; @active-border){
+  color: @color;
+  background-color: @background-color;
+  border-color: @border-color;
+  .transition(background-color 200ms ease);
+  &:hover:not([disabled]),
+  &:focus {
+    background-color: @hover-bg;
+    border-color: @hover-bg;
+  }
+
+  &:active {
+    border-color: @active-border;
+  }
+}

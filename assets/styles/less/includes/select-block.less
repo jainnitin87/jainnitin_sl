@@ -1,0 +1,118 @@
+@circle_green: #98b36a;
+@circle_gray: #9aa8b1;
+
+.select-block {
+  display: block;
+  margin-top: 35px;
+  .clearfix();
+
+  &.dark {
+    a {
+      // TODO: Add a transition on the `fill` property also
+      .transition(background-color 200ms ease);
+
+      &,
+      &:visited,
+      &:hover,
+      &:focus {
+        color: @dark_1;
+        border-color: @border_dark;
+      }
+
+      &:hover {
+        background-color: @select_block_hover_dark;
+        .icon-continue {
+          fill: @blue_1;
+        }
+      }
+    }
+
+  }
+
+  a {
+    display: block;
+    float: left;
+    width: 100%;
+    border: 1px solid #fff;
+    border-width: 1px 1px 0 1px;
+    padding: 29px;
+    position: relative;
+    .box-sizing(border-box);
+
+    &.entity-option {
+      padding-left: 71px;
+
+      // TODO: Find out why using `.enabled & {}` under the :before element is
+      // not working.
+      &.active {
+        > .name:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          margin-top: -8px;
+          left: 30px;
+          width: 16px;
+          height: 16px;
+          background-color: @circle_green;
+          .border-radius(15px);
+        }
+      }
+      &.inactive {
+        > .name:before {
+          content: '';
+          display: block;
+          position: absolute;
+          top: 50%;
+          margin-top: -8px;
+          left: 30px;
+          width: 16px;
+          height: 16px;
+          background-color: @circle_gray;
+          .border-radius(15px);
+        }
+      }
+
+      .description {
+        font-size: 0.8em;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(12,112,157,0.6);
+      cursor: pointer;
+      .icon-continue {
+        fill: @blue_3;
+      }
+    }
+
+    &:first-child {
+      border-radius: 4px 4px 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 4px 4px;
+      border-width: 1px 1px 1px 1px;
+    }
+
+    &,
+    &:visited,
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    >.name {
+      max-width: 90%;
+    }
+  }
+
+  .icon-continue {
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    right: 30px;
+
+  }
+}
