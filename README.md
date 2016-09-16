@@ -1,15 +1,36 @@
-# sloop
+# node-js-getting-started
 
-Xi Billing API and UI project.
+A barebones Node.js app using [Express 4](http://expressjs.com/).
 
-Documents:
-1. Billing Design: https://docs.google.com/document/d/1UsF5fz0pZdTIg8f__AXxgqepqBp6BugxSWeL0c3IB0g/edit?pli=1#
-2. Vendor API Doc: https://docs.google.com/document/d/1XLJhCoUvl5rtFjPsJgsA_LbFpuIXXbPE5WvrXx9a17I/edit?pref=2&pli=1
-3. Use cases and API: https://docs.google.com/spreadsheets/d/1royaw2pQ0SdbexN35YohUJ85Ohy5ggtoMmAHYy6DE0s/edit#gid=66666094
+This application support the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
 
-UI Mockups
-https://docs.google.com/spreadsheets/d/1dSeSHLkXI-is4phXE1UALZ-5tu-baJvEGIq2XFDrlT8/edit#gid=0
+## Running Locally
 
-1. https://drive.google.com/a/nutanix.com/file/d/0B4EOpi0bhA1tM0t3MG1SQWljT00/view
-2. https://drive.google.com/a/nutanix.com/file/d/0B5S3WNyAeKXScE5jX3JTZU9zeVE/view
-3. https://drive.google.com/a/nutanix.com/file/d/0B5S3WNyAeKXSa3ZfazZ3MDVZLTQ/view
+Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+
+```sh
+$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
+$ cd node-js-getting-started
+$ npm install
+$ npm start
+```
+
+Your app should now be running on [localhost:5000](http://localhost:5000/).
+
+## Deploying to Heroku
+
+```
+$ heroku create
+$ git push heroku master
+$ heroku open
+```
+
+## Documentation
+
+For more information about using Node.js on Heroku, see these Dev Center articles:
+
+- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
+- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
+- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
+- [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
+- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
