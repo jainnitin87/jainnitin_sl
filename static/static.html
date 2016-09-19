@@ -39,10 +39,11 @@
 
             function callback(response) {
                 var redirectUrl = "";
+                console.log(response);
                 if (response.success) {
                     redirectUrl =
                         "https://yourdomain.com/yourapp/callback.jsp?refid=" + response.refId + "&field_passthrough1=" + response.field_passthrough1;
-                    window.location.replace(redirectUrl);
+                    //window.location.replace(redirectUrl);
                 } else {
                     if (response.responseFrom == "Response_From_Submit_Page") {
                         // Handle the error response when the Payment Page submission failed.
@@ -52,7 +53,7 @@
                         redirectUrl = "https://yourdomain.com/yourapp/callback.jsp?success=false&errorcode=" + response.errorCode + "&errorMessage=" + response.errorMessage;
                     }
                 }
-                window.location.replace(redirectUrl);
+                //window.location.replace(redirectUrl);
             }
 
             var prepopulateFields = {};
