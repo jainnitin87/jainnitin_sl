@@ -54,7 +54,7 @@ app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
         method: 'POST'
     }, function(err, res1, body) {
 
-        if (err || !body.success) {  
+        if (err) {  
             console.log(body);
             return console.error('failed to create Subscription', err); 
         } 
