@@ -96,5 +96,11 @@ app.get('/api/v1/getZuoraSignature', function(req, res) {
     }).auth('nitin.jain@nutanix.com', 'Nutanix1');
 });
 
+app.get('/api/v1/subscriptionCallout', function(req,res){
+    console.log("callout for successful subscription");
+    console.log(req);
+    console.log(req.params);
+})
+
 
 app.listen(port);
