@@ -43,7 +43,7 @@
                 if (response.success) {
                     redirectUrl =
                         "/api/v1/createSubscription/"+response.refId;
-                    //window.location.replace(redirectUrl);
+                    window.location.replace(redirectUrl);
                 } else {
                     if (response.responseFrom == "Response_From_Submit_Page") {
                         // Handle the error response when the Payment Page submission failed.
