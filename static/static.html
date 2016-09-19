@@ -1,17 +1,72 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<style type="text/css">
-	.title{
-		text-align: center;
-		font-size: 10px;
-	}
+    <script type="text/javascript" src="https://apisandboxstatic.zuora.com/Resources/libs/hosted/1.1.0/zuora-min.js"></script>
+    <style type="text/css">
+    .title {
+        text-align: center;
+        font-size: 10px;
+    }
+    </style>
+    <title>NITIN TEST PAGE</title>
 
-</style>
-	<title>NITIN TEST PAGE</title>
 </head>
-<body>
-<div class="title">NITIN's TEST PAGE</div>
 
+<body>
+    <div class="title">NITIN's TEST PAGE</div>
+    <div id="zuora_payment" ></div>
+
+    <script type="text/javascript">
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost:8080/api/v1/getZuoraSignature");
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        	var signature = JSON.parse(this.responseText);
+
+            var params = {
+                tenantId: signature.tenantId,
+                id: "2c92c0f85721ff7c015731d73546108c",
+                token: signature.token,
+                signature: signature.signature,
+                style: "overlay",
+                key: signature.key,
+                submitEnabled: "true",
+                locale: "fr_FR",
+                url: "https://apisandbox.zuora.com/apps/PublicHostedPageLite.do",
+                paymentGateway: "Test"
+            };
+
+            function callback(response) {
+                var redirectUrl = "";
+                if (response.success) {
+                    redirectUrl =
+                        "https://yourdomain.com/yourapp/callback.jsp?refid=" + response.refId + "&field_passthrough1=" + response.field_passthrough1;
+                    window.location.replace(redirectUrl);
+                } else {
+                    if (response.responseFrom == "Response_From_Submit_Page") {
+                        // Handle the error response when the Payment Page submission failed.
+                        redirectUrl = "https://yourdomain.com/yourapp/callback.jsp?success=false&errorcode=" + response.errorCode + "&errorMessage=" + response.errorMessage;
+                    } else {
+                        // Handle the error response when the Payment Page request failed.
+                        redirectUrl = "https://yourdomain.com/yourapp/callback.jsp?success=false&errorcode=" + response.errorCode + "&errorMessage=" + response.errorMessage;
+                    }
+                }
+                window.location.replace(redirectUrl);
+            }
+
+            var prepopulateFields = {};
+
+
+            Z.render(
+                params,
+                prepopulateFields,
+                callback
+            );
+        }
+    };
+    xhr.send();
+    </script>
 </body>
+
 </html>
