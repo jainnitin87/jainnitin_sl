@@ -14,8 +14,60 @@ app.get('/test123', function(req, res) {
     });
 });
 
+app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
+    console.log('creating new subscription for provided paymentMethodId = ' + req.params.tagId);
 
-app.get('/api/v1/getZuoraSignature',function(req,res){
+    var data = {
+        "name": "Test Account- Nitin",
+        "currency": "USD",
+        "billCycleDay": 0,
+        "autoPay": false,
+        "billToContact": {
+            "country": "United States",
+            "firstName": "John",
+            "lastName": "Smith",
+            "state": "CA"
+        },
+        "hpmCreditCardPaymentMethodId": req.params.tagId,
+        "subscription": {
+            "termType": "TERMED",
+            "initialTerm": 12,
+            "renewalTerm": 12,
+            "autoRenew": true,
+            "notes": "This is a trial subscription for POST account demo.",
+            "subscribeToRatePlans": [{
+                    "productRatePlanId": "2c92c0f8564ed83a01566b2ed4f971d9"
+
+                }
+
+            ],
+            "contractEffectiveDate": "2016-01-01"
+        }
+    };
+
+    request({
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        uri: 'https://apisandbox-api.zuora.com/rest/v1/accounts',
+        body: formData,
+        method: 'POST'
+    }, function(err, res1, body) {
+        if (err) {  
+            return console.error('failed to get the signature', err); 
+        } 
+        else {
+            res.sendfile('static/successSubscription.html', {
+                root: __dirname
+            });
+        }
+
+    }).auth('nitin.jain@nutanix.com', 'Nutanix1');
+
+})
+
+
+app.get('/api/v1/getZuoraSignature', function(req, res) {
     console.log("requesting signature");
     var data = {
         "uri": "https://www.zuora.com/apps/PublicHostedPageLite.do",
@@ -27,14 +79,14 @@ app.get('/api/v1/getZuoraSignature',function(req,res){
 
     request({
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
         uri: 'https://apisandbox-api.zuora.com/rest/v1/rsa-signatures',
         body: formData,
         method: 'POST'
-    }, function (err, res1, body) {
+    }, function(err, res1, body) {
         if (err) {  
-                return console.error('failed to get the signature', err); 
+            return console.error('failed to get the signature', err); 
         } 
         console.log('Got the signature', body);
         res.send(body);
