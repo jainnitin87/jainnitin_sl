@@ -2,9 +2,7 @@ var express = require('express');
 var port = process.env.PORT || 8080;
 var request = require('request');
 
-console.log("added express")
 var app = express();
-console.log("got express")
 
 app.get('/test123', function(req, res) {
     console.log("hit the end point");
@@ -15,7 +13,7 @@ app.get('/test123', function(req, res) {
 });
 
 app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
-    console.log('creating new subscription for provided paymentMethodId = ' + req.params.tagId);
+    console.log('creating new subscription for provided paymentMethodId = ' + req.params.paymentMethodId);
 
     var data = {
         "name": "Test Account- Nitin",
@@ -28,7 +26,7 @@ app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
             "lastName": "Smith",
             "state": "CA"
         },
-        "hpmCreditCardPaymentMethodId": req.params.tagId,
+        "hpmCreditCardPaymentMethodId": req.params.paymentMethodId,
         "subscription": {
             "termType": "TERMED",
             "initialTerm": 12,
@@ -45,6 +43,8 @@ app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
         }
     };
 
+    var formData = JSON.stringify(data);
+
     request({
         headers: {
             'Content-Type': 'application/json'
@@ -53,10 +53,13 @@ app.get('/api/v1/createSubscription/:paymentMethodId', function(req, res) {
         body: formData,
         method: 'POST'
     }, function(err, res1, body) {
-        if (err) {  
-            return console.error('failed to get the signature', err); 
+
+        if (err || !body.success) {  
+            console.log(body);
+            return console.error('failed to create Subscription', err); 
         } 
         else {
+            console.log(res1,body);
             res.sendfile('static/successSubscription.html', {
                 root: __dirname
             });
