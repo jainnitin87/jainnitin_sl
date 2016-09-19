@@ -19,7 +19,7 @@
 
     <script type="text/javascript">
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost:8080/api/v1/getZuoraSignature");
+    xhr.open("GET", "/api/v1/getZuoraSignature");
     xhr.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
         	var signature = JSON.parse(this.responseText);
