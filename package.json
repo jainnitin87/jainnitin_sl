@@ -7,9 +7,11 @@
     "start": "node index.js"
   },
   "dependencies": {
+    "csv-write-stream": "*",
     "express": "~4.9.x",
-    "request":"*",
-    "csv-write-stream":"*"
+    "moment": "^2.15.1",
+    "pg": "^6.1.0",
+    "request": "*"
   },
   "engines": {
     "node": "0.10.x"
